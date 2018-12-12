@@ -23,6 +23,9 @@ public class MetroStationController : MonoBehaviour
 	private Vector3 _platform1PositionMin;
 	private Vector3 _platform1PositionMax;
 
+	private GameObject _metro;
+	private IList<PersonController> _persons;
+
 	private void Awake()
 	{
 		_bottomPositionMin = _bottomTargetMin.transform.position;
@@ -33,6 +36,8 @@ public class MetroStationController : MonoBehaviour
 		
 		_platform1PositionMin = _platform1TargetMin.transform.position;
 		_platform1PositionMax = _platform1TargetMax.transform.position;
+		
+		_persons = new List<PersonController>();
 	}
 
 	public Vector3 GetWaitTrainPosition()
@@ -42,7 +47,7 @@ public class MetroStationController : MonoBehaviour
 		return new Vector3(randomX,_bottomPositionMin.y,randomZ);
 	}
 	
-	public Vector3 GetTrainPosition()
+	private Vector3 GetTrainPosition()
 	{
 		var coin = Random.Range(0, 1);
 		var randomX = 0f;
@@ -58,5 +63,20 @@ public class MetroStationController : MonoBehaviour
 			randomZ = Random.Range(_platform1PositionMin.z, _platform1PositionMax.z);	
 		}
 		return new Vector3(randomX,_platform1PositionMax.y,randomZ);
+	}
+
+	public void AddPerson(PersonController person)
+	{
+		if(_persons.Contains(person)) return;
+		_persons.Add(person);
+	}
+
+	public void NotifyMetroArrived()
+	{
+		foreach(var person in _persons)
+		{
+			person.NotifyMetroArrived(GetTrainPosition());
+		}
+		_persons.Clear();
 	}
 }

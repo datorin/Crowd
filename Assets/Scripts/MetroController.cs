@@ -66,4 +66,9 @@ public class MetroController : MonoBehaviour
 			_targetPosition = _target0Position;
 		}
 	}
+
+	public bool IsOnStation()
+	{
+		return _isOnStation;
+	}
 }
