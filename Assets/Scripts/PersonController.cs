@@ -11,6 +11,7 @@ public class PersonController : MonoBehaviour
 	private NavMeshAgent _agent;
 	
 	[SerializeField] public GameObject Target;
+	public GameObject CurrentMetro;
 	
 	// Use this for initialization
 	void Start ()

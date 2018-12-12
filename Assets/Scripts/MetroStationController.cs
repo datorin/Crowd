@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MetroStationController : MonoBehaviour
@@ -14,6 +15,8 @@ public class MetroStationController : MonoBehaviour
 	[SerializeField] private GameObject _platform1TargetMin;
 	[SerializeField] private GameObject _platform1TargetMax;
 
+	[SerializeField] private GameObject _metroDestination;
+
 	private Vector3 _bottomPositionMin;
 	private Vector3 _bottomPositionMax;
 	
@@ -24,7 +27,7 @@ public class MetroStationController : MonoBehaviour
 	private Vector3 _platform1PositionMax;
 
 	private GameObject _metro;
-	private IList<PersonController> _persons;
+	private IList<WalkingToMetroState> _persons;
 
 	private void Awake()
 	{
@@ -37,7 +40,7 @@ public class MetroStationController : MonoBehaviour
 		_platform1PositionMin = _platform1TargetMin.transform.position;
 		_platform1PositionMax = _platform1TargetMax.transform.position;
 		
-		_persons = new List<PersonController>();
+		_persons = new List<WalkingToMetroState>();
 	}
 
 	public Vector3 GetWaitTrainPosition()
@@ -65,18 +68,37 @@ public class MetroStationController : MonoBehaviour
 		return new Vector3(randomX,_platform1PositionMax.y,randomZ);
 	}
 
-	public void AddPerson(PersonController person)
+	public void AddPerson(WalkingToMetroState person)
 	{
 		if(_persons.Contains(person)) return;
 		_persons.Add(person);
 	}
 
-	public void NotifyMetroArrived()
+	public void RemovePerson(WalkingToMetroState person)
 	{
+		_persons.Remove(person);
+		if (!_persons.Any())
+		{
+			_metro.GetComponent<MetroController>().Go();
+		}
+	}
+	
+	public void NotifyMetroArrived(GameObject metro)
+	{
+		_metro = metro;
 		foreach(var person in _persons)
 		{
-			person.NotifyMetroArrived(GetTrainPosition());
+			person.NotifyMetroArrived(GetTrainPosition(),_metro);
 		}
-		_persons.Clear();
+
+		if (!_persons.Any())
+		{
+			_metro.GetComponent<MetroController>().Go();
+		}
+	}
+
+	public Vector3 GetMetroDestination()
+	{
+		return _metroDestination.transform.position;
 	}
 }
