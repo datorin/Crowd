@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Persistence
@@ -7,16 +9,16 @@ namespace Persistence
     {
         public static readonly WorkplaceManager Instance = new WorkplaceManager();
         
-        private readonly List<GameObject> workplaces;
+        private readonly List<GameObject> _workplaces;
 
         private WorkplaceManager()
         {
-            workplaces = new List<GameObject>();
+            _workplaces = new List<GameObject>();
         }
 
         public void AddWorkplace(GameObject obj)
         {
-            workplaces.Add(obj);
+            _workplaces.Add(obj);
         }
 
         private static BuildingController GetWorkplaceController(GameObject obj)
@@ -26,12 +28,17 @@ namespace Persistence
 
         public Vector3 GetRandomWorkplace()
         {
-            return GetWorkplaceController(workplaces.Random()).GetRandomAvailableWorkPosition();
+            return GetWorkplaceController(_workplaces.Random()).GetRandomAvailableWorkPosition();
         }
 
         public void ClearManager()
         {
-            workplaces.Clear();
+            _workplaces.Clear();
+        }
+
+        public IEnumerable<BuildingController> GetAllControllers()
+        {
+            return _workplaces.Select(GetWorkplaceController);
         }
     }
 }

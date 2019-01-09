@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Persistence;
 using UnityEngine;
 using UnityEngine.AI;
-using Utils;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PersonController : MonoBehaviour
@@ -12,11 +9,21 @@ public class PersonController : MonoBehaviour
 	
 	[SerializeField] public GameObject Target;
 	public GameObject CurrentMetro;
+
+	[SerializeField] public Vector3 HomePosition;
+	[SerializeField] public Vector3 WorkPosition;
 	
 	// Use this for initialization
-	void Start ()
+	private void Awake()
 	{
 		_agent = GetComponent<NavMeshAgent>();
+		PersonsManager.Instance.AddPerson(gameObject);
+	}
+
+	public void ExecuteAwake()
+	{
+		WorkPosition = WorkplaceManager.Instance.GetRandomWorkplace();
+		_agent.SetDestination(WorkPosition);
 	}
 
 	public void NotifyMetroArrived(Vector3 trainPosition)

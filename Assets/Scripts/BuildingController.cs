@@ -11,7 +11,11 @@ public class BuildingController : MonoBehaviour
     private void Awake()
     {
         _availableWorkPositions = new Dictionary<Vector3, bool>();
+        WorkplaceManager.Instance.AddWorkplace(gameObject);
+    }
 
+    public void ExecuteAwake()
+    {
         for (var i = 0; i >= 0; i++)
         {
             var floor = gameObject.transform.Find("Floor_" + i);
@@ -25,10 +29,8 @@ public class BuildingController : MonoBehaviour
                 }
             }
         }
-        
-        WorkplaceManager.Instance.AddWorkplace(gameObject);
     }
-
+    
     public Vector3 GetRandomAvailableWorkPosition()
     {
         var place = _availableWorkPositions.Where(x => x.Value).Random().Key;
