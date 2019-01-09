@@ -30,7 +30,7 @@ public class PersonController : MonoBehaviour, ITimeListener
 	public void ExecuteAwake()
 	{
 		WorkPosition = WorkplaceManager.Instance.GetRandomWorkplace();
-		HomePosition = ApartmentManager.Instance.GetRandomApartment();
+		HomePosition = transform.position;
 		SupermarketPosition = SupermarketManager.Instance.GetRandomSupermarket();
 		
 		var workingHours = Functions.Random(2, 8);
@@ -74,8 +74,6 @@ public class PersonController : MonoBehaviour, ITimeListener
 		{
 			_routine.Add(hour, HomePosition);
 		}
-
-		transform.position = HomePosition;
 	}
 
 	public void NotifyMetroArrived(Vector3 trainPosition)

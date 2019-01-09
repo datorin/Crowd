@@ -11,11 +11,6 @@ public class StartManager : MonoBehaviour
     private void Start()
     {
         RecordsController.Instance.ExecuteAwake();
-        
-        foreach (var i in Functions.Range(0, 100))
-        {
-            Instantiate(PersonPrefab, new Vector3(i * 2, 2, 10), Quaternion.identity);
-        }
 
         new StandardTimer(() =>
         {
@@ -50,6 +45,11 @@ public class StartManager : MonoBehaviour
             }
             
             DayTime.Instance.ExecuteAwake();
+        
+            foreach (var i in Functions.Range(0, 100))
+            {
+                Instantiate(PersonPrefab, ApartmentManager.Instance.GetRandomApartment(), Quaternion.identity);
+            }
            
             foreach (var controller in PersonsManager.Instance.GetAllControllers())
             {
