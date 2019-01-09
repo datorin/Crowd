@@ -46,5 +46,11 @@ namespace Persistence
                 return list;
             }
         }
+
+        public static Hobbies Random(this Hobbies hobby)
+        {
+            var list = new List<Hobbies> {Hobbies.Cinema, Hobbies.Park, Hobbies.Shop};
+            return list.Random();
+        }
     }
 }

@@ -48,11 +48,15 @@ public class StartManager : MonoBehaviour
             {
                 controller.ExecuteAwake();
             }
+            
+            DayTime.Instance.ExecuteAwake();
            
             foreach (var controller in PersonsManager.Instance.GetAllControllers())
             {
                 controller.ExecuteAwake();
             }
+            
+            TimeTextController.Instance.ExecuteAwake();
             
         }, 1);
     }
