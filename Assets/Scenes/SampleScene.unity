@@ -586,10 +586,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 107701715}
-  - component: {fileID: 107701719}
   - component: {fileID: 107701714}
   - component: {fileID: 107701716}
   - component: {fileID: 107701717}
+  - component: {fileID: 107701718}
   m_Layer: 0
   m_Name: God
   m_TagString: Untagged
@@ -651,6 +651,17 @@ MonoBehaviour:
   - {fileID: 647552475}
   - {fileID: 1131408162}
   _metros: []
+--- !u!114 &107701718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107701713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4e899de4704cf291af08d5b6c5dccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &127359143
 Mesh:
   m_ObjectHideFlags: 0
@@ -2151,6 +2162,8 @@ MonoBehaviour:
   _speed: 50
   _hSpeed: 5
   _vSpeed: 5
+  _fire: {fileID: 0}
+  _gold: {fileID: 0}
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
