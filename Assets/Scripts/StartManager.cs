@@ -12,7 +12,7 @@ public class StartManager : MonoBehaviour
     {
         RecordsController.Instance.ExecuteAwake();
         
-        foreach (var i in Functions.Range(0, 10))
+        foreach (var i in Functions.Range(0, 100))
         {
             Instantiate(PersonPrefab, new Vector3(i * 2, 2, 10), Quaternion.identity);
         }

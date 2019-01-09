@@ -74,6 +74,8 @@ public class PersonController : MonoBehaviour, ITimeListener
 		{
 			_routine.Add(hour, HomePosition);
 		}
+
+		transform.position = HomePosition;
 	}
 
 	public void NotifyMetroArrived(Vector3 trainPosition)
