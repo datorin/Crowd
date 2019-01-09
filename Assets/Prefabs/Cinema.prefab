@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 114934569246567464}
   - component: {fileID: 64089856951856090}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,6 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4358742029102136}
+  - component: {fileID: 114113077812561414}
   m_Layer: 0
   m_Name: Cinema
   m_TagString: Untagged
@@ -9241,6 +9242,17 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114113077812561414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885551180862546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62d7aca250e496292e5375d5d56834a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114320736121390812
 MonoBehaviour:
   m_ObjectHideFlags: 1

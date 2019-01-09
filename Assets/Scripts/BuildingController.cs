@@ -25,7 +25,8 @@ public class BuildingController : MonoBehaviour
             {
                 foreach (var z in Functions.Range(9, 19, 1))
                 {
-                    _availableWorkPositions.Add(new Vector3(x + transform.position.x, high, z + transform.position.y), true);
+                    if(_availableWorkPositions.ContainsKey(new Vector3(x + transform.position.x, high, z + transform.position.z))) continue;
+                    _availableWorkPositions.Add(new Vector3(x + transform.position.x, high, z + transform.position.z), true);
                 }
             }
         }
