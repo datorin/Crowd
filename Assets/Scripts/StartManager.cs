@@ -1,12 +1,34 @@
 using Controllers;
+using Persistence;
 using UnityEngine;
+using Utils;
 
 public class StartManager : MonoBehaviour
 {
+
+    [SerializeField] public GameObject PersonPrefab;
+    
     private void Start()
     {
         RecordsController.Instance.ExecuteAwake();
+        
+        foreach (var i in Functions.Range(0, 10))
+        {
+            Instantiate(PersonPrefab, new Vector3(i * 2, 2, 10), Quaternion.identity);
+        }
 
-        new StandardTimer(() => { }, 1);
+        new StandardTimer(() =>
+        {
+            foreach (var controller in WorkplaceManager.Instance.GetAllControllers())
+            {
+                controller.ExecuteAwake();
+            }
+            
+            foreach (var controller in PersonsManager.Instance.GetAllControllers())
+            {
+                controller.ExecuteAwake();
+            }
+           
+        }, 3);
     }
 }
