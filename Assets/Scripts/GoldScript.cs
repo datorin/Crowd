@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
-public class FireScript : MonoBehaviour
+public class GoldScript : MonoBehaviour
 {
 
 	[SerializeField] private float _distance;
@@ -32,7 +32,7 @@ public class FireScript : MonoBehaviour
 		var aux = Vector3.Distance(transform.position, other.transform.position);
 		if (other.GetComponent<ITriggerable>() != null)
 		{
-			other.GetComponent<ITriggerable>().Fire(transform.position,_distance-aux);
+			other.GetComponent<ITriggerable>().Gold(transform.position,_distance-aux);
 		}
 	}
 }

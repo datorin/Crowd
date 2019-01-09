@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33478032512032616}
   - component: {fileID: 23925614486146678}
   - component: {fileID: 65161569668248824}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4715726973185970}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
