@@ -12,11 +12,13 @@ namespace Persistence
         
         private readonly List<GameObject> _cinemas;
         private readonly List<GameObject> _parks;
+        private readonly List<GameObject> _shops;
 
         private HobbiesManager()
         {
             _cinemas = new List<GameObject>();
             _parks = new List<GameObject>();
+            _shops = new List<GameObject>();
         }
 
         public void AddCinema(GameObject obj)
@@ -57,6 +59,26 @@ namespace Persistence
         public IEnumerable<ParkController> GetAllParkControllers()
         {
             return _parks.Select(GetParkController);
+        }
+        
+        public void AddShop(GameObject shop)
+        {
+            _shops.Add(shop);
+        }
+        
+        private static ShopController GetShopController(GameObject obj)
+        {
+            return obj.GetComponent<ShopController>();
+        }
+
+        public Vector3 GetRandomShopPlace()
+        {
+            return GetShopController(_shops.Random()).GetRandomAvailableWorkPosition();
+        }
+
+        public IEnumerable<ShopController> GetAllShopControllers()
+        {
+            return _shops.Select(GetShopController);
         }
         
         public void ClearManager()

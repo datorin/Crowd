@@ -29,12 +29,22 @@ public class StartManager : MonoBehaviour
                 controller.ExecuteAwake();
             }
 
+            foreach (var controller in SupermarketManager.Instance.GetAllControllers())
+            {
+                controller.ExecuteAwake();
+            }
+            
             foreach (var controller in HobbiesManager.Instance.GetAllCinemaControllers())
             {
                 controller.ExecuteAwake();
             }
             
             foreach (var controller in HobbiesManager.Instance.GetAllParkControllers())
+            {
+                controller.ExecuteAwake();
+            }
+            
+            foreach (var controller in HobbiesManager.Instance.GetAllShopControllers())
             {
                 controller.ExecuteAwake();
             }
