@@ -23,6 +23,11 @@ public class StartManager : MonoBehaviour
             {
                 controller.ExecuteAwake();
             }
+            
+            foreach (var controller in ApartmentManager.Instance.GetAllControllers())
+            {
+                controller.ExecuteAwake();
+            }
 
             foreach (var controller in HobbiesManager.Instance.GetAllCinemaControllers())
             {
