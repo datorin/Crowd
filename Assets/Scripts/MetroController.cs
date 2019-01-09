@@ -33,22 +33,19 @@ public class MetroController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-	{/*
+	{
 		if (_isOnStation)
 		{
-			_timeWaitActual -= Time.deltaTime;	
+			_timeWaitActual -= Time.deltaTime;
 		}
-
-		if (_timeWaitActual <= 0)
-		{
-			Move();
-			_isOnStation = false;
-		}*/
 
 		if (_canGo)
 		{
-			Move();
-			_isOnStation = false;
+			if (_timeWaitActual <= 0)
+			{
+				Move();
+				_isOnStation = false;
+			}
 		}
 		
 		if (Math.Abs(transform.position.x - _targetPosition.x) < _speed * 0.02f && _isOnStation == false)
