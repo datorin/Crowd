@@ -21,6 +21,7 @@ public class RunState : StateMachineBehaviour
 		if (_time <= 0)
 		{
 			animator.SetBool("isFire",false);
+			animator.SetTrigger("isFinished");	
 		}
 	}
 

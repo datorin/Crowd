@@ -20,6 +20,7 @@ public class MoneyState : StateMachineBehaviour
 		if (_time <= 0)
 		{
 			animator.SetBool("isGold",false);
+			animator.SetTrigger("isFinished");
 		}
 	}
 

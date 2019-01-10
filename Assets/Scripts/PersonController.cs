@@ -17,6 +17,7 @@ public class PersonController : MonoBehaviour, ITriggerable
 	public bool IsFire;
 	public bool IsGold;
 	public Vector3 EventPosition;
+	public Vector3 ExitPosition;
 
 	[SerializeField] public Vector3 HomePosition;
 	[SerializeField] public Vector3 WorkPosition;
@@ -102,6 +103,7 @@ public class PersonController : MonoBehaviour, ITriggerable
 		EventPosition = origin;
 		IsFire = true;
 		GetComponent<Animator>().SetBool("isFire",true);
+		
 	}
 
 	public void Gold(Vector3 origin)
