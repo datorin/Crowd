@@ -10,8 +10,8 @@ public class PathFindingState : StateMachineBehaviour
 	{
 		_pedestrian = animator.gameObject;
 		var metroPosition = MetroManager.Instance.GetClosestStation(_pedestrian.transform.position).transform.position;
-		var aux = Vector3.Distance(_pedestrian.transform.position, metroPosition);
-		if (aux > 250)
+		var aux = Vector3.Distance(_pedestrian.transform.position, _pedestrian.GetComponent<PersonController>().Destination);
+		if (aux > 500)
 		{
 			animator.SetBool("walking",true);
 		}

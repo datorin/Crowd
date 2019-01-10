@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Persistence;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class PersonController : MonoBehaviour, ITimeListener
+public class PersonController : MonoBehaviour, ITriggerable
 {
 	private NavMeshAgent _agent;
 	
 	[SerializeField] public GameObject Target;
 	public GameObject CurrentMetro;
 	public Vector3 Destination;
+	public bool IsFire;
+	public bool IsGold;
+	public Vector3 EventPosition;
 
 	[SerializeField] public Vector3 HomePosition;
 	[SerializeField] public Vector3 WorkPosition;
@@ -30,6 +34,7 @@ public class PersonController : MonoBehaviour, ITimeListener
 
 	public void ExecuteAwake()
 	{
+		CurrentMetro = MetroController.Instance.gameObject;
 		WorkPosition = WorkplaceManager.Instance.GetRandomWorkplace();
 		HomePosition = transform.position;
 		SupermarketPosition = SupermarketManager.Instance.GetRandomSupermarket();
@@ -87,19 +92,25 @@ public class PersonController : MonoBehaviour, ITimeListener
 		var hour = DayTime.Instance.Hour;
 		Destination = _routine[hour];
 		
-		GetComponent<Animator>().SetTrigger("isFinished");
-		
+		GetComponent<Animator>().SetTrigger("isFinished");		
 		// TO BE CHANCHED
  		//_agent.SetDestination(destination);
 	}
-	
-	public void TimePassed()
+
+	public void Fire(Vector3 origin)
 	{
-		
+		EventPosition = origin;
+		IsFire = true;
+		GetComponent<Animator>().SetBool("isFire",true);
 	}
 
-	public void HourPassed()
+	public void Gold(Vector3 origin)
 	{
-		SetNewDestination();
+		if (!IsFire)
+		{
+			EventPosition = origin;
+			IsGold = true;
+			GetComponent<Animator>().SetBool("isGold",true);
+		}
 	}
 }

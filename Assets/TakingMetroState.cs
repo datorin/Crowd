@@ -14,7 +14,7 @@ public class TakingMetroState : StateMachineBehaviour
 		_pedestrian = animator.gameObject;
 		_metro = _pedestrian.GetComponent<PersonController>().CurrentMetro;
 		_metro.GetComponent<MetroController>().AddPerson(this);
-
+		
 		if (_metro != null)
 		{
 			_pedestrian.transform.parent = _metro.transform;

@@ -21,7 +21,7 @@ namespace Persistence
 
         public void ExecuteAwake()
         {
-            new RegularTimer(AddOneMinute, 1);
+            new RegularTimer(AddOneMinute, 0.5f);
         }
         
         public override string ToString()

@@ -14,7 +14,7 @@ public class WalkingToActionState : StateMachineBehaviour {
 		_pedestrian = animator.gameObject;
 		_agent = _pedestrian.GetComponent<NavMeshAgent>();
 		_agent.enabled = true;
-		_destination = _pedestrian.GetComponent<PersonController>().WorkPosition;//Target.transform.position;
+		_destination = _pedestrian.GetComponent<PersonController>().Destination;//Target.transform.position;
 		_agent.SetDestination(_destination); //GetDestination();
 	}
 

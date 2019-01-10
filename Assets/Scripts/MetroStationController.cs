@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Utils;
 
 public class MetroStationController : MonoBehaviour
 {
@@ -52,18 +53,18 @@ public class MetroStationController : MonoBehaviour
 	
 	private Vector3 GetTrainPosition()
 	{
-		var coin = Random.Range(0, 1);
+		var coin = Functions.Random(0, 1);
 		var randomX = 0f;
 		var randomZ = 0f;
 		if (coin == 0)
 		{
-			randomX = Random.Range(_platform0PositionMin.x, _platform0PositionMax.x);
-			randomZ = Random.Range(_platform0PositionMin.z, _platform0PositionMax.z);	
+			randomX = Functions.RandomFloat(_platform0PositionMin.x, _platform0PositionMax.x);
+			randomZ = Functions.RandomFloat(_platform0PositionMin.z, _platform0PositionMax.z);	
 		}
 		else
 		{
-			randomX = Random.Range(_platform1PositionMin.x, _platform1PositionMax.x);
-			randomZ = Random.Range(_platform1PositionMin.z, _platform1PositionMax.z);	
+			randomX = Functions.RandomFloat(_platform1PositionMin.x, _platform1PositionMax.x);
+			randomZ = Functions.RandomFloat(_platform1PositionMin.z, _platform1PositionMax.z);	
 		}
 		return new Vector3(randomX,_platform1PositionMax.y,randomZ);
 	}

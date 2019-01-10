@@ -29,10 +29,9 @@ public class GoldScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		var aux = Vector3.Distance(transform.position, other.transform.position);
 		if (other.GetComponent<ITriggerable>() != null)
 		{
-			other.GetComponent<ITriggerable>().Gold(transform.position,_distance-aux);
+			other.GetComponent<ITriggerable>().Gold(transform.position);
 		}
 	}
 }

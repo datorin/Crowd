@@ -22,4 +22,9 @@ public class RegularTimer : ITimeable
 		_secondsElapsed -= _waitSeconds;
 		_action();
 	}
+	
+	public void Kill()
+	{
+		RecordsController.Instance.RemoveTimeLister(this);
+	}
 }
