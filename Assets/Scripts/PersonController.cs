@@ -12,6 +12,7 @@ public class PersonController : MonoBehaviour, ITimeListener
 	
 	[SerializeField] public GameObject Target;
 	public GameObject CurrentMetro;
+	public Vector3 Destination;
 
 	[SerializeField] public Vector3 HomePosition;
 	[SerializeField] public Vector3 WorkPosition;
@@ -84,10 +85,12 @@ public class PersonController : MonoBehaviour, ITimeListener
 	public void SetNewDestination()
 	{
 		var hour = DayTime.Instance.Hour;
-		var destination = _routine[hour];
+		Destination = _routine[hour];
+		
+		GetComponent<Animator>().SetTrigger("isFinished");
 		
 		// TO BE CHANCHED
- 		_agent.SetDestination(destination);
+ 		//_agent.SetDestination(destination);
 	}
 	
 	public void TimePassed()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,13 +17,15 @@ public class MetroManager : MonoBehaviour
 
     public GameObject GetClosestStation(Vector3 position)
     {
-        //To change
-        if (position.Equals(new Vector3(0,0,0)))
+        var auxDistance = 1000f;
+        GameObject aux = null;
+        foreach (var station in _stations)
         {
-            return _stations.Last();
+            if (Vector3.Distance(position, station.gameObject.transform.position) < auxDistance)
+            {
+                aux = station;
+            }
         }
-        return _stations.First();
+        return aux;
     }
-    
-    
 }
